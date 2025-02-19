@@ -9,6 +9,7 @@ import lombok.Data;
 public class AppointmentAttributesDAO {
     @Id
     private Long id;
+
     private String attribute;
     private String val;
 }

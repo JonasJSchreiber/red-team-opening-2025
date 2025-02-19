@@ -1,17 +1,17 @@
 package com.jonas.demo.appointment;
 
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class AppointmentService {
     private final AppointmentRepository appointmentRepository;
 
-    AppointmentDAO save(AppointmentDAO appointmentDAO) {
+    AppointmentDAO upsert(AppointmentDAO appointmentDAO) {
         if (appointmentDAO.getId() == null) {
+            appointmentRepository.save(appointmentDAO);
             // ... step 1
         } else {
             Optional<AppointmentDAO> optional = appointmentRepository.findById(appointmentDAO.getId());
@@ -23,5 +23,4 @@ public class AppointmentService {
         }
         return appointmentDAO;
     }
-
 }
